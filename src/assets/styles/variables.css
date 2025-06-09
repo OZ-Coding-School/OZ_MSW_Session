@@ -1,13 +1,13 @@
-:root {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 @font-face {
   font-family: "GamjaFlower";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(/src/assets/fonts/GamjaFlower-Regular.ttf) format("ttf");
+  src: url("/public/fonts/GamjaFlower-Regular.ttf") format("ttf");
+}
+
+:root {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

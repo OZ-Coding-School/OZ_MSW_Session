@@ -1,26 +1,83 @@
+import { deleteComment } from "../../api/comments/comments";
+import { useModal } from "../../hooks/useModal";
 import { CustomButton } from "../_common/buttons";
+import ModalContent from "../_common/modal/Modal.Content";
 
-const CommentControlBtn = ({ commentId }) => {
-  const handleDelete = () => {
-    console.log(commentId, "삭제");
+const CommentControlBtn = ({
+  commentId,
+  isUpdating,
+  onUpdate,
+  onCancel,
+  setRenderTrigger,
+}) => {
+  const ErrorModal = useModal();
+  const DeleteModal = useModal();
+  const handleDelete = async () => {
+    try {
+      await deleteComment(commentId);
+      setRenderTrigger((prev) => prev + 1);
+    } catch (err) {
+      ErrorModal.openModal();
+    } finally {
+      DeleteModal.closeModal();
+    }
   };
 
   const handleUpdate = () => {
-    console.log(commentId, "수정");
+    onUpdate(DeleteModal.openModal);
   };
+
+  const handleCancel = () => {
+    onCancel();
+    DeleteModal.closeModal();
+  };
+
   return (
-    <div className="flex gap-1 justify-baseline items-center">
-      <CustomButton mode="text" onClick={handleUpdate}>
-        수정
-      </CustomButton>
-      <CustomButton
-        mode="text"
-        className="text-error-100"
-        onClick={handleDelete}
+    <>
+      <div className="flex gap-1 justify-baseline items-center">
+        <CustomButton mode="text" onClick={handleUpdate}>
+          {isUpdating ? "완료" : "수정"}
+        </CustomButton>
+        <CustomButton
+          mode="text"
+          className="text-error-100"
+          onClick={DeleteModal.openModal}
+        >
+          삭제
+        </CustomButton>
+      </div>
+
+      <ModalContent
+        isOpen={DeleteModal.isOpen}
+        onClose={DeleteModal.closeModal}
       >
-        삭제
-      </CustomButton>
-    </div>
+        <div className="flex flex-col items-center gap-8 p-8 font-gamja min-w-2xs">
+          <h1 className="text-3xl">❌ 삭제</h1>
+          <p className="text-xl">삭제하시겠습니까?</p>
+          <div className="flex items-center justify-between gap-8">
+            <CustomButton mode="text" onClick={handleCancel} className="">
+              취소
+            </CustomButton>
+            <CustomButton
+              mode="text"
+              onClick={handleDelete}
+              className="w-12 text-xl text-error-200"
+            >
+              삭제
+            </CustomButton>
+          </div>
+        </div>
+      </ModalContent>
+      <ModalContent isOpen={ErrorModal.isOpen} onClose={ErrorModal.closeModal}>
+        <div className="flex flex-col items-center gap-8 p-8 min-w-2xs">
+          <h1 className="text-3xl">⚠️ 에러</h1>
+          <p className="text-xl">댓글 삭제에 실패했습니다.</p>
+          <CustomButton mode="button" onClick={ErrorModal.closeModal}>
+            확인
+          </CustomButton>
+        </div>
+      </ModalContent>
+    </>
   );
 };
 

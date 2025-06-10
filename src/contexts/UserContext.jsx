@@ -6,6 +6,7 @@ const DefaultUserInfo = {
   username: "",
   email: "",
   id: 1,
+  isLoggedIn: false,
 };
 
 export const UserProvider = ({ children }) => {

@@ -21,6 +21,7 @@ const CommentCreate = ({ setRenderTrigger }) => {
       <CustomTextArea
         id="comment"
         name="comment"
+        autoFocus={false}
         className="bg-gray-200 rounded-lg focus:outline-0 p-4 w-full"
         value={commentContent}
         onChange={handleCommentChange}

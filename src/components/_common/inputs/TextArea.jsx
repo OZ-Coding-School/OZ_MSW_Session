@@ -7,7 +7,7 @@ const TextArea = ({ className, ...props }) => {
         "resize-none w-full h-full focus:outline-0",
         className
       )}
-      autoFocus
+      autoFocus={props.autoFocus ?? true}
       {...props}
     />
   );

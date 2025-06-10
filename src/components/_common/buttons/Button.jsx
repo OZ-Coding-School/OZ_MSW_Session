@@ -2,7 +2,8 @@ import { memo } from "react";
 import { twMerge } from "tailwind-merge";
 
 export const CustomButton = memo(({ mode, children, className, ...rest }) => {
-  let buttonStyle = "font-gamja text-dark cursor-pointer ";
+  let buttonStyle =
+    "font-gamja text-dark cursor-pointer disabled:text-gray-400";
   switch (mode) {
     case "text":
       buttonStyle = twMerge("text-base hover:text-primary", buttonStyle);

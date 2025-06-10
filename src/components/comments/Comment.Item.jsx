@@ -1,4 +1,5 @@
 import { useUserInfo } from "../../contexts/UserContext";
+import { UserCard } from "../_common/userCard";
 import CommentControlBtn from "./Comment.ControlBtn";
 
 const CommentItem = ({ comment }) => {
@@ -6,7 +7,7 @@ const CommentItem = ({ comment }) => {
   return (
     <div className="font-gamja">
       <div className="flex items-baseline justify-between">
-        <div>{comment.author.username}</div>
+        <UserCard userInfo={comment.author} />
         {userInfo.id === comment.author?.id && (
           <CommentControlBtn commentId={comment.id} />
         )}

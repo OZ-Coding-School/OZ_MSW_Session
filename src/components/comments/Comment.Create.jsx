@@ -1,4 +1,4 @@
-import Button from "../_common/buttons/Button";
+import { CustomButton } from "../_common/buttons";
 
 const CommentCreate = () => {
   return (
@@ -10,7 +10,7 @@ const CommentCreate = () => {
         className="bg-gray-200 rounded-lg resize-none focus:outline-0 p-4 w-full"
       />
       <div className="flex justify-end">
-        <Button mode="text">저장</Button>
+        <CustomButton mode="text">저장</CustomButton>
       </div>
     </div>
   );

@@ -26,7 +26,7 @@ const dummy = {
 
 export const Comments = () => {
   return (
-    <section className="mx-56 mt-10 pb-20 font-gamja">
+    <section className="mx-24 sm:mx-32 md:mx-40 lg:mx-56 mt-10 pb-20 font-gamja">
       <CommentTitle>댓글({dummy.comments_number ?? 0})</CommentTitle>
       <CommentItemList commentList={dummy.comments} />
       <CommentCreate />

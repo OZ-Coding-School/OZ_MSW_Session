@@ -66,7 +66,7 @@ const CommentControlBtn = ({
         </div>
       </CustomModal>
       <CustomModal isOpen={ErrorModal.isOpen} onClose={ErrorModal.closeModal}>
-        <div className="flex flex-col items-center gap-8 p-8 min-w-2xs">
+        <div className="flex flex-col items-center gap-8 p-8 font-gamja min-w-2xs">
           <h1 className="text-3xl">⚠️ 에러</h1>
           <p className="text-xl">댓글 삭제에 실패했습니다.</p>
           <CustomButton mode="button" onClick={ErrorModal.closeModal}>

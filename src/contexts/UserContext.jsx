@@ -5,7 +5,7 @@ const UserContext = createContext(null);
 const DefaultUserInfo = {
   username: "",
   email: "",
-  id: 1,
+  id: -1,
   isLoggedIn: false,
 };
 

@@ -3,6 +3,7 @@ import { useModal } from "./useModal";
 
 export const useForm = ({ initialValues, validate, onSubmit }) => {
   const ErrorModal = useModal();
+
   const [formData, setFormData] = useState(initialValues);
   const [touched, setTouched] = useState({ email: false, password: false });
   const [error, setError] = useState({
@@ -31,7 +32,7 @@ export const useForm = ({ initialValues, validate, onSubmit }) => {
         Object.keys(formData).reduce((touched, field) => {
           touched[field] = true;
           return touched;
-        })
+        }, {})
       );
       setError(errors);
       if (Object.values(errors).some((v) => v)) {
@@ -40,6 +41,7 @@ export const useForm = ({ initialValues, validate, onSubmit }) => {
 
       await onSubmit(formData);
     } catch (error) {
+      console.log(error);
       ErrorModal.openModal();
     }
   };

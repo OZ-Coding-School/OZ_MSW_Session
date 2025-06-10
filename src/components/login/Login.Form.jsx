@@ -4,11 +4,13 @@ import { useForm } from "../../hooks/useForm";
 import { CustomButton } from "../_common/buttons";
 import FormInput from "../_common/inputs/FormInput";
 import { LoginInputConfigs } from "./config";
-
-import LoginLogo from "../../assets/logos/POSTS.png";
+import { useUserInfo } from "../../contexts/UserContext";
 import { CustomModal } from "../_common/modal";
 
+import LoginLogo from "../../assets/logos/POSTS.png";
+
 const LoginForm = ({ onClose }) => {
+  const { handleUserInfo } = useUserInfo();
   const { error, touched, handleSubmit, getFieldProps, ErrorModal } = useForm({
     initialValues: { email: "", password: "" },
     validate: useCallback((values) => {
@@ -23,8 +25,9 @@ const LoginForm = ({ onClose }) => {
       return errors;
     }, []),
     onSubmit: async (loginDatas) => {
-      await login(loginDatas);
+      const response = await login(loginDatas);
       onClose();
+      handleUserInfo({ ...response, isLoggedIn: true });
     },
   });
   return (

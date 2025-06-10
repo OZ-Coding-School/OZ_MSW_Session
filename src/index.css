@@ -1,10 +1,17 @@
-@layer base, utilities, tailwind;
+@layer base,  tailwind, utilities;
 @layer tailwind {
   @font-face {
     font-family: "GamjaFlower";
     src: url("../src/assets/fonts/GamjaFlower-Regular.ttf");
   }
   @import "tailwindcss";
+}
+@layer utilities {
+  :root {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
   @theme {
     --font-gamja: "GamjaFlower", "sans-serif";
     --color-primary: #66e04b;
@@ -15,14 +22,12 @@
     --color-white: #fffafa;
   }
 }
-@layer utilities {
-  @import url("./assets/styles/variables.css");
-}
 @layer base {
   @import url("./assets/styles/reset.css");
 
   html {
     height: 100dvh;
+    font-family: "GamjaFlower", "sans-serif";
   }
 
   #root {

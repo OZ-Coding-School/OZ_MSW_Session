@@ -54,5 +54,6 @@ export const useUserInfo = () => {
     throw new Error(
       "ContextError: UserContext는 UserProvider 내부에서만 사용할 수 있습니다."
     );
+
   return ctx;
 };

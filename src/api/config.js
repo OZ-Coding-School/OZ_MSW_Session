@@ -5,6 +5,9 @@ export const Auth = {
   logout() {
     return "/logout";
   },
+  userInfo() {
+    return "/user-info";
+  },
 };
 
 export const Comment = {

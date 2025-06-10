@@ -24,6 +24,9 @@ const FormInput = ({ labelText, error, ...props }) => {
             "rounded-xl w-full min-h-12 border-1 pl-2",
             error.length > 0 ? errorClassName : ""
           )}
+          autoComplete={
+            props.name === "password" ? `current-password` : "email"
+          }
         />
 
         {props.type === "password" && (

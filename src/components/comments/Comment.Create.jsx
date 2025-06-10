@@ -13,6 +13,7 @@ const CommentCreate = ({ setRenderTrigger }) => {
   const onSubmit = async () => {
     await createComment(commentContent);
     setRenderTrigger((prev) => prev + 1);
+    setCommentContent("");
   };
 
   return (

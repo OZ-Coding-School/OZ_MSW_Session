@@ -3,7 +3,7 @@ export const commentsDTO = (rawData) =>
     id: comment.comment_id,
     content: comment.content,
     author: {
-      id: author.user_id,
-      username: author.username,
+      id: comment.author.user_id,
+      username: comment.author.username,
     },
   }));

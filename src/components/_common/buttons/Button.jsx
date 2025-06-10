@@ -1,12 +1,16 @@
+import { memo } from "react";
 import { twMerge } from "tailwind-merge";
 
-const Button = ({ mode, children, className, ...rest }) => {
+export const CustomButton = memo(({ mode, children, className, ...rest }) => {
   let buttonStyle = "font-gamja text-dark cursor-pointer ";
   switch (mode) {
     case "text":
       buttonStyle = twMerge("text-base hover:text-primary", buttonStyle);
       break;
     case "sumbit":
+      buttonStyle = twMerge("", buttonStyle);
+      break;
+    case "icon":
       buttonStyle = twMerge("", buttonStyle);
       break;
     default:
@@ -22,6 +26,4 @@ const Button = ({ mode, children, className, ...rest }) => {
       {children}
     </button>
   );
-};
-
-export default Button;
+});

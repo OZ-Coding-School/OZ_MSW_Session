@@ -3,7 +3,7 @@ export const Auth = {
     return "/login";
   },
   logout() {
-    return "logout";
+    return "/logout";
   },
 };
 

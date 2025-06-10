@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { CustomInput } from ".";
 import { CustomButton } from "../buttons/Button";
@@ -6,9 +6,9 @@ import { twMerge } from "tailwind-merge";
 
 const FormInput = ({ labelText, error, ...props }) => {
   const [inputType, setInputType] = useState(props.type || "text");
-  const handleEyeClick = () => {
+  const handleEyeClick = useCallback(() => {
     setInputType((prev) => (prev === "text" ? "password" : "text"));
-  };
+  }, []);
   const errorClassName = "border-red-400 border";
 
   return (

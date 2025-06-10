@@ -1,4 +1,5 @@
 import axios from "axios";
+import { localStorageUtils } from "../utilities/localStorage";
 
 const BASE_URL = "";
 
@@ -9,6 +10,16 @@ export const instance = axios.create({
   },
 });
 
-// instance.interceptors.request();
-
-// instance.interceptors.response();
+instance.interceptors.request.use(
+  (config) => {
+    const { getItemFromLocalStorage } = localStorageUtils();
+    const tokens = getItemFromLocalStorage("authkey");
+    if (tokens?.access) {
+      config.headers.Authorization = `bearer ${tokens.access}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);

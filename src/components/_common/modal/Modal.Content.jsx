@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const ModalContent = ({ children, onClose, isOpen }) => {
+const ModalContent = ({ children, onClose }) => {
   useEffect(() => {
     const onKeyDown = (e) => {
       if (e.key === "Escape") {
@@ -13,7 +13,7 @@ const ModalContent = ({ children, onClose, isOpen }) => {
     };
   }, []);
 
-  return isOpen ? (
+  return (
     <div
       className="fixed flex justify-center items-center left-0 right-0 top-0 bottom-0 bg-gray-500/80"
       onClick={onClose}
@@ -25,7 +25,7 @@ const ModalContent = ({ children, onClose, isOpen }) => {
         {children}
       </div>
     </div>
-  ) : null;
+  );
 };
 
 export default ModalContent;

@@ -2,7 +2,6 @@ import FullLogo from "../../assets/logos/FullLogo.png";
 import { useModal } from "../../hooks/useModal";
 import { CustomButton } from "../_common/buttons";
 import { CustomModal } from "../_common/modal";
-
 import LoginForm from "../login/Login.Form";
 
 export const Navbar = () => {
@@ -19,14 +18,13 @@ export const Navbar = () => {
           className="h-full w-full object-fit"
         />
       </div>
-      <CustomButton mode="button" onClick={() => LoginModal.setIsOpen(true)}>
+      <CustomButton mode="button" onClick={LoginModal.openModal}>
         로그인
       </CustomButton>
-      {LoginModal.isOpen && (
-        <CustomModal onClose={() => LoginModal.setIsOpen(false)}>
-          <LoginForm onClose={() => LoginModal.setIsOpen(false)} />
-        </CustomModal>
-      )}
+
+      <CustomModal onClose={LoginModal.closeModal} isOpen={LoginModal.isOpen}>
+        <LoginForm onClose={LoginModal.closeModal} />
+      </CustomModal>
     </nav>
   );
 };

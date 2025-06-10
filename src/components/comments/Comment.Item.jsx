@@ -2,11 +2,11 @@ import { useState } from "react";
 import { updateComment } from "../../api/comments/comments";
 import { useUserInfo } from "../../contexts/UserContext";
 import { UserCard } from "../_common/userCard";
-import CommentControlBtn from "./Comment.ControlBtn";
 import { CustomTextArea } from "../_common/inputs";
 import { useModal } from "../../hooks/useModal";
-import ModalContent from "../_common/modal/Modal.Content";
 import { CustomButton } from "../_common/buttons";
+import CommentControlBtn from "./Comment.ControlBtn";
+import { CustomModal } from "../_common/modal";
 
 const CommentItem = ({ comment, setRenderTrigger }) => {
   const { userInfo } = useUserInfo();
@@ -79,7 +79,7 @@ const CommentItem = ({ comment, setRenderTrigger }) => {
           )}
         </div>
       </div>
-      <ModalContent isOpen={ErrorModal.isOpen} onClose={ErrorModal.closeModal}>
+      <CustomModal isOpen={ErrorModal.isOpen} onClose={ErrorModal.closeModal}>
         <div className="flex flex-col items-center gap-8 p-8 min-w-2xs">
           <h1 className="text-3xl">⚠️ 에러</h1>
           <p className="text-xl">댓글 수정에 실패했습니다.</p>
@@ -87,7 +87,7 @@ const CommentItem = ({ comment, setRenderTrigger }) => {
             확인
           </CustomButton>
         </div>
-      </ModalContent>
+      </CustomModal>
     </>
   );
 };

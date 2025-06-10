@@ -1,10 +1,12 @@
 import ModalContent from "./Modal.Content";
 import { ModalPortal } from "./Modal.Portal";
 
-export const CustomModal = ({ children, onClose }) => {
+export const CustomModal = ({ children, onClose, isOpen }) => {
   return (
-    <ModalPortal>
-      <ModalContent onClose={onClose}>{children}</ModalContent>
-    </ModalPortal>
+    isOpen && (
+      <ModalPortal>
+        <ModalContent onClose={onClose}>{children}</ModalContent>
+      </ModalPortal>
+    )
   );
 };

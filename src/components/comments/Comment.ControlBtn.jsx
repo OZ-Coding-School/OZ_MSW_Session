@@ -1,7 +1,7 @@
 import { deleteComment } from "../../api/comments/comments";
 import { useModal } from "../../hooks/useModal";
 import { CustomButton } from "../_common/buttons";
-import ModalContent from "../_common/modal/Modal.Content";
+import { CustomModal } from "../_common/modal";
 
 const CommentControlBtn = ({
   commentId,
@@ -47,10 +47,7 @@ const CommentControlBtn = ({
         </CustomButton>
       </div>
 
-      <ModalContent
-        isOpen={DeleteModal.isOpen}
-        onClose={DeleteModal.closeModal}
-      >
+      <CustomModal isOpen={DeleteModal.isOpen} onClose={DeleteModal.closeModal}>
         <div className="flex flex-col items-center gap-8 p-8 font-gamja min-w-2xs">
           <h1 className="text-3xl">❌ 삭제</h1>
           <p className="text-xl">삭제하시겠습니까?</p>
@@ -67,8 +64,8 @@ const CommentControlBtn = ({
             </CustomButton>
           </div>
         </div>
-      </ModalContent>
-      <ModalContent isOpen={ErrorModal.isOpen} onClose={ErrorModal.closeModal}>
+      </CustomModal>
+      <CustomModal isOpen={ErrorModal.isOpen} onClose={ErrorModal.closeModal}>
         <div className="flex flex-col items-center gap-8 p-8 min-w-2xs">
           <h1 className="text-3xl">⚠️ 에러</h1>
           <p className="text-xl">댓글 삭제에 실패했습니다.</p>
@@ -76,7 +73,7 @@ const CommentControlBtn = ({
             확인
           </CustomButton>
         </div>
-      </ModalContent>
+      </CustomModal>
     </>
   );
 };

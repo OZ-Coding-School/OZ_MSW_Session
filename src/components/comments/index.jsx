@@ -5,8 +5,8 @@ import CommentCreate from "./Comment.create";
 import CommentItemList from "./Comment.ItemList";
 import CommentTitle from "./Comment.Title";
 import { useModal } from "../../hooks/useModal";
-import ModalContent from "../_common/modal/Modal.Content";
 import { CustomButton } from "../_common/buttons";
+import { CustomModal } from "../_common/modal";
 
 export const Comments = () => {
   const { userInfo } = useUserInfo();
@@ -37,7 +37,7 @@ export const Comments = () => {
         )}
       </section>
 
-      <ModalContent
+      <CustomModal
         onClose={ConfirmModal.closeModal}
         isOpen={ConfirmModal.isOpen}
       >
@@ -48,7 +48,7 @@ export const Comments = () => {
             확인
           </CustomButton>
         </div>
-      </ModalContent>
+      </CustomModal>
     </>
   );
 };

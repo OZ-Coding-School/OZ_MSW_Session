@@ -27,7 +27,6 @@ export const Comments = () => {
     handleGetComments();
   }, [renderTrigger]);
 
-  console.dir(comments);
   return (
     <>
       <section className="mx-24 sm:mx-32 md:mx-40 lg:mx-56 mt-10 pb-20 font-gamja">

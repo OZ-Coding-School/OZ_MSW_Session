@@ -1,7 +1,7 @@
 import axios from "axios";
 import { localStorageUtils } from "../utilities/localStorage";
 
-const BASE_URL = "http://localhost:5173";
+const BASE_URL = "";
 
 export const instance = axios.create({
   baseURL: BASE_URL,

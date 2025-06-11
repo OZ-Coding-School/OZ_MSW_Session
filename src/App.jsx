@@ -21,7 +21,6 @@ function App() {
     if (token?.access) {
       getUserInfo().then((res) => {
         handleUserInfo({ ...res, isLoggedIn: true });
-        console.log(res);
       });
     }
   }, []);

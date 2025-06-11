@@ -6,15 +6,15 @@ let COMMENT_LIST = [
     content: "좋은 글 감사합니다",
     author: {
       user_id: 4,
-      username: "username",
+      username: "스타개발자",
     },
   },
   {
     comment_id: 2,
-    content: "comment content",
+    content: "프론트엔드가 이런 일을 하는군요!",
     author: {
       user_id: 2,
-      username: "user2",
+      username: "김개발",
     },
   },
 ];

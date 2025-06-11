@@ -36,6 +36,10 @@ export const handlers = [
     };
     return HttpResponse.json(response);
   }),
+
+  http.post("/logout", () => {
+    return HttpResponse.json({ message: "로그아웃 완료" }, { status: 200 });
+  }),
   http.get("/user-info", () => {
     return HttpResponse.json({
       user_info: USER_DATA,
